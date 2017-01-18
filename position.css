@@ -1,0 +1,153 @@
+/*positions for index*/
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 56.250em;
+  margin: 0 auto;
+  padding: 0 0em;
+  box-sizing: border-box; }
+
+h3  {
+  margin: 0em;
+}
+
+h2 {
+  margin: 0.5em 0em 1.4em 1.35em;
+}
+
+.logo-box {
+  width: 14em;
+  height: 3.3em;
+  padding: 1em 0em 0em 0em;
+}
+
+.logo-img {
+  margin-top: 0.01em;
+  padding-right: 0.01em;
+}
+
+.logo-font {
+  padding: 0em 0.9em;
+  margin: -0.275em 0em 0.1em;
+  width: 9.938em;
+}
+
+.logo-text {
+  text-indent: .5em;
+}
+
+.top-blurb {
+ height: 7.4em;
+}
+
+.blog-title {
+  margin: 0em 0em 0.5em 0em;
+}
+
+.blog-text {
+  text-indent: 2.5em;
+  max-width: 47em;
+  line-height: 1.25em;
+  margin: 0em .2em 0em 0em;
+  padding-left: 1.5em;
+}
+
+.blog-title-block {
+  height: 6em;
+}
+
+.line-div {
+  position:absolute;
+  content: url("img/small-logo.png");
+  height: 2.063em;
+  width: 1.938em;
+  margin: 0.5% 48%;
+  padding: 0.0em 0.2em;
+}
+
+.lineup {
+  margin-top: -0.15em;
+}
+
+.social {
+ padding: 2em 0.5em;
+}
+
+.share {
+  border: 0.063em;
+  height: 1.0em;
+  width: 7.5em;
+  padding: 1.3em 1.2em;
+}
+
+.column {
+  margin-left: 6%;
+  margin-right: 2%;
+  margin-top: 1.5%;
+  line-height: 1.6em;
+  padding: 1%;
+  width: 40%;
+  height: 80%;
+}
+
+.about-blurb  {
+  padding: 0.2em 0.0em 0em 0.1em;
+  max-width: 70%;
+  margin: 0em;
+}
+
+.about-div {
+  height: 7.7em;
+}
+
+.gap {
+  margin-left: 0.5em;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.center {
+  text-align: center;
+}
+
+.justify {
+  text-align: justify;
+}
+
+.block {
+  display: block;
+}
+
+.inblock {
+  display: inline-block;
+}
+
+.inline {
+  display: inline;
+
+}
+
+.headshot {
+  margin: 0% 1% 0% 0%;
+}
+
+footer {
+  text-align: center;
+  position: relative;
+}
+
+.footer-div {
+  height: 5em;
+  margin-top: 2.2em;
+}
+
+.footer-legal {
+  padding: 0.1em 0em;
+}
