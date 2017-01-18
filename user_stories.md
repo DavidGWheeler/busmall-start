@@ -8,10 +8,10 @@
 # User stories
 
 ## FGM
-* I want to survey images of products, three at a time, so I can compare them three at a time.
-* I want images to fill the full width of the page so I am not looking at blank space.
-* I want to be instructed on how to interact with the images, so I know what is expected.
-* I want my selection to be clearly defined (such as with a text pop-over saying "Click to pick this one!" ) so I can be sure I am following instructions.
+* ~~I want to survey images of products, three at a time, so I can compare them three at a time.~~
+* ~~I want images to fill the full width of the page so I am not looking at blank space.~~
+* ~~I want to be instructed on how to interact with the images, so I know what is expected.~~
+* ~~I want my selection to be clearly defined (such as with a text pop-over saying "Click to pick this one!" ) so I can be sure I am following instructions.~~
 * I want to be taken to a second set of three image after each selection, so I can pick more than one image.
 * I want a counter to increase by one, for every selection I make, so I know how close I am to being done.
 * I want to see the images as many times as it takes for me to reach a total of 25, so I can contribute to the focus group.
@@ -40,3 +40,7 @@
 or-else
 * I want the have a separate page open with results displayed.
 * I want to dynamically create the results page.
+
+
+###resources of interest:
+* https://support.google.com/richmedia/answer/2672585?hl=en
