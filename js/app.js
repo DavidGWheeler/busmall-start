@@ -12,7 +12,7 @@ var pickCenterProduct = document.getElementById('pickCenter');
 var pickRightProduct = document.getElementById('pickRight');
 
 
-function Products (name, path) {
+function Products(name, path) {
   this.name = name;
   this.path = path;
   this.clickTotal = 0;
@@ -48,7 +48,7 @@ var randNum = function () {
 
 function displayPics() {
   var leftIndex = randNum();
-  var leftProduct = allProducts[leftIndex];
+  var leftProduct = allProducts[pickLeft];
   pickLeft.src = pickLeftProduct.path;
   pickLeft.alt = pickLeftProduct.name;
   leftProduct.views += 1;
@@ -80,6 +80,7 @@ function displayPics() {
   rightProduct.views += 1;
 
   previouslyShown = [leftIndex, centerIndex, rightIndex];
+  console.log(previouslyShown + ': = previouslyShown');
 }
 
 function button() {
@@ -139,7 +140,7 @@ function handleClick(image){
 }
 
 pickLeft.addEventListener('click', function(){
-  handleClick(productImages[pickleft]);
+  handleClick(productImages[pickLeft]);
 });
 
 pickCenter.addEventListener('click', function(){

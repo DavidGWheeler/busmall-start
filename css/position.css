@@ -131,3 +131,15 @@ footer {
 .footer-legal {
   padding: 0.1em 0em;
 }
+
+button {
+  margin-left: 44%;
+  margin-right: auto;
+  margin-top: 0%;
+  margin-bottom: 3px;
+  background-color: white;
+  border-width: 2px;
+  border-color: blue;
+  text-align: center;
+  padding: 25px;
+}
