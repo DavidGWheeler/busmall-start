@@ -8,13 +8,15 @@
 # User stories
 
 ## FGM
-* I want to survey images of products, three at a time.
-* I want images to fill the full width of the page.
-* I want to be instructed on how to interact with the images.
-* I want my selection to be clearly defined (such as with a text pop-over saying "Click to pick this one!" )
-* I want to be taken to a second set of three image after each selection.
-* I want to see the images as many times as it takes for me to choose 25.
-* I want to see the result of my survey.
+* I want to survey images of products, three at a time, so I can compare them three at a time.
+* I want images to fill the full width of the page so I am not looking at blank space.
+* I want to be instructed on how to interact with the images, so I know what is expected.
+* I want my selection to be clearly defined (such as with a text pop-over saying "Click to pick this one!" ) so I can be sure I am following instructions.
+* I want to be taken to a second set of three image after each selection, so I can pick more than one image.
+* I want a counter to increase by one, for every selection I make, so I know how close I am to being done.
+* I want to see the images as many times as it takes for me to reach a total of 25, so I can contribute to the focus group.
+* I want to see the result of my survey, so I can review my selections.
+* I want a thank you message to be displayed at the end of the survey, perhaps within the results, so I feel appreciated.
 * I want the survey results to be presented in an attractive format. (*needs clarification*: is this a table or a grid of the images or something else?)
 * *nice to have*: I want to be able to choose "none of these" if I don't like any of the images.
 
