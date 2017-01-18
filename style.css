@@ -1,0 +1,84 @@
+h3 {
+  font-family: inherit;
+  font-size: 24px
+}
+
+body {
+  font-family: 'droid_serifregular', serif;
+}
+
+.blog-title {
+  font-family: 'Oswald', sans-serif;
+}
+
+.blog-text {
+  color: grey;
+}
+
+
+.hash-line {
+  height: 1em;
+  background: url("img/hash.png") repeat-x 0 0;
+  border: 0;
+}
+
+.logo-text {
+  font-family: 'Abel', sans-serif;
+
+}
+
+.logo-font {
+  font-family: 'Yellowtail', cursive;
+}
+
+label {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 23px;
+}
+
+.grey-text {
+  color: grey;
+}
+
+
+.list-bg {
+  height: 16em;
+  background-image: url("img/list-bg.png");
+  background-repeat: no-repeat;
+}
+
+/*remove bullets*/
+ul {
+  list-style: none;
+  list-style-type: none;
+
+}
+
+
+.headshot img {
+  max-width: 100%;
+  border: 0;
+}
+
+.about-auth {
+  font-family: 'Droid Serif', serif;
+  height: 10%;
+  width: 100%;
+  border-top: 0.063em;
+}
+
+.share {
+  font-family: sans-serif;
+  color: #FAFAFA;
+  background-color: #bd4621;
+  border-color: #750808;
+  text-decoration: none;
+}
+
+.foot-line {
+  width: 100%;
+  margin: -1% 0%;
+  font-size: 1em;
+  display: inline-block;
+  background-color: lightgrey;
+}
