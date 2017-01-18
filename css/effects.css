@@ -14,3 +14,8 @@ a:hover {
 .strikethrough:checked + label {
   text-decoration:line-through;
 }
+
+#popOut {
+  margin-left: 10%;
+  margin-top: 0;
+}

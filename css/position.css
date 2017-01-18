@@ -16,6 +16,27 @@ h2 {
   margin: 0.5em 0em 1.4em 1.35em;
 }
 
+.logoBox {
+  width: 14em;
+  height: 3.3em;
+  padding: 1em 0em 0em 0em;
+}
+
+.logoImg {
+  margin-top: 0.01em;
+  padding-right: 0.01em;
+}
+
+.logoFont {
+  padding: 0em 0.9em;
+  margin: -0.275em 0em 0.1em;
+  width: 9.938em;
+}
+
+.logoText {
+  text-indent: .5em;
+}
+
 /*.lineDiv {
   position:absolute;
   content: url("img/small-logo.jpg");
