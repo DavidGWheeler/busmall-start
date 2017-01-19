@@ -7,3 +7,5 @@
 - I used @awallraff Adam Wallraff's helper code, from slack, for getting started on my displayImages function.  I had to make a lot of adjustments to make it work, but it was helpful after I walked through the code line-by-line to understand how it worked.
 
 - TA @rburke RachelBurke reviewed my User Stories [user_stories.md]("busmall-start/user_stories.md") and gave me buy-off on hittimg MVP + if I implemented all of them.
+
+- Student @arczero1 Brandon Little contributed his knowledge of the .includes method on an array, for evaluating repeated images in my array of previouslyShown.
