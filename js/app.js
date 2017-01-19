@@ -15,6 +15,7 @@ var resultShow = document.getElementById('resultShow');
 var imageSection = document.getElementById('popOut');
 var wipeLS = document.getElementById('lSWipe');
 var chartData = localStorage.getItem('chartPersist');
+var previouslyShown = [];
 
 function Products(name, path) {
   this.name = name;
@@ -61,7 +62,7 @@ function displayPics() {
 //pick a second picture for center and compare to left.
   pickCenter = randNum();
 //While they match, pick another
-  while (pickCenter === pickLeft) {
+  while (pickCenter === pickLeft || previouslyShown.includes(pickLeft) || previouslyShown.includes(pickCenter)) {
     pickCenter = randNum();
     console.log(pickCenter + ': = pickCenter');
   }
@@ -74,7 +75,7 @@ function displayPics() {
 //pick a third image for the right, compare to center image.
   pickRight = randNum();
 //While they match, pick another
-  while (pickRight === pickLeft || pickRight === pickCenter) {
+  while (pickRight === pickLeft || pickRight === pickCenter || previouslyShown.includes(pickRight)) {
     pickRight = randNum();
     console.log(pickRight + ': = pickRight');
   }
@@ -85,7 +86,7 @@ function displayPics() {
   rightProduct.views += 1;
   console.log(rightProduct);
 
-  previouslyShown = [leftProduct, centerProduct, rightProduct];
+  previouslyShown = [pickLeft, pickCenter, pickRight];
   console.log(previouslyShown + ': = previouslyShown');
 }
 
