@@ -10,14 +10,19 @@ var pickRight;
 var pickLeftProduct = document.getElementById('pickLeft');
 var pickCenterProduct = document.getElementById('pickCenter');
 var pickRightProduct = document.getElementById('pickRight');
-
+var thanksText = document.getElementById('popIn');
+var resultShow = document.getElementById('resultShow');
+var imageSection = document.getElementById('popOut');
+var wipeLS = document.getElementById('lSWipe');
+var chartData = localStorage.getItem('chartPersist');
 
 function Products(name, path) {
   this.name = name;
   this.path = path;
-  this.clickTotal = 0;
-  this.timesDisplayed = 0;
+  this.totalClicks = 0;
+  this.displayedCount = 0;
   productImages.push(this);
+  console.log(this);
 }
 
 var bag = new Products('Star Wars Luggage', 'img/bag.jpg');
@@ -42,67 +47,68 @@ var waterCan = new Products('Watering Can', 'img/water-can.jpg');
 var wineGlass = new Products('Wine Glass', 'img/wine-glass.jpg');
 
 //Pick a random number
-var randNum = function () {
+var randNum = function() {
   return Math.floor(Math.random() * productImages.length);
 };
 
 function displayPics() {
-  var leftIndex = randNum();
-  var leftProduct = allProducts[pickLeft];
-  pickLeft.src = pickLeftProduct.path;
-  pickLeft.alt = pickLeftProduct.name;
+  pickLeft = randNum();
+  var leftProduct = productImages[pickLeft];
+  pickLeftProduct.src = leftProduct.path;
+  pickLeftProduct.alt = leftProduct.name;
   leftProduct.views += 1;
 
 //pick a second picture for center and compare to left.
-  var centerIndex = randNum();
+  pickCenter = randNum();
 //While they match, pick another
-  while (centerIndex === leftIndex) {
-    centerIndex = randNum();
-    console.log(centerIndex + ': = centerIndex');
+  while (pickCenter === pickLeft) {
+    pickCenter = randNum();
+    console.log(pickCenter + ': = pickCenter');
   }
 
-  var centerProduct = allProducts[centerIndex];
-  pickCenter.src = pickCenterProduct.path;
-  pickCenter.alt = pickCenterProduct.name;
+  var centerProduct = productImages[pickCenter];
+  pickCenterProduct.src = centerProduct.path;
+  pickCenterProduct.alt = centerProduct.name;
   centerProduct.views += 1;
 
 //pick a third image for the right, compare to center image.
-  var rightIndex = randNum();
+  pickRight = randNum();
 //While they match, pick another
-  while (rightIndex === leftIndex || rightIndex === centerIndex) {
-    rightIndex = randNum();
-    console.log(centerIndex + ': = rightIndex');
+  while (pickRight === pickLeft || pickRight === pickCenter) {
+    pickRight = randNum();
+    console.log(pickRight + ': = pickRight');
   }
 
-  var rightProduct = allProducts[rightIndex];
-  pickRight.src = pickRightProduct.path;
-  pickRight.alt = pickRightProduct.name;
+  var rightProduct = productImages[pickRight];
+  pickRightProduct.src = rightProduct.path;
+  pickRightProduct.alt = rightProduct.name;
   rightProduct.views += 1;
+  console.log(rightProduct);
 
-  previouslyShown = [leftIndex, centerIndex, rightIndex];
+  previouslyShown = [pickLeft, pickCenter, pickRight];
   console.log(previouslyShown + ': = previouslyShown');
 }
 
 function button() {
   if(totalClicks < productImages.length) {
-    document.getElementById('resultsButton').style.visibility = 'hidden';
+    document.getElementById('resultShow').style.visibility = 'hidden';
   } else {
-    document.getElementById('resultsButton').style.visibility = 'visible';
+    document.getElementById('resultShow').style.visibility = 'visible';
   }
 }
 function hideSection() {
   if (totalClicks < productImages.length){
-    document.getElementById('hide').style.display = 'block';
+    document.getElementById('popOut').style.display = 'block';
   } else {
-    document.getElementById('hide').style.display = 'none';
+    document.getElementById('popOut').style.display = 'none';
   }
 }
 
 function thanksText(){
   if (totalClicks < productImages.length){
-    document.getElementById('appear').style.display = 'none';
+    document.getElementById('popIn').style.display = 'none';
   } else {
-    document.getElementById('appear').style.display = 'block';
+    document.getElementById('popIn').style.display = 'block';
   }
 }
 
@@ -126,6 +132,29 @@ function dataSet2() {
   }
 }
 
+function chartMake() {
+  var data = {
+    labels : ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulu', 'dogDuck', 'dragon', 'pen', 'pawBroom', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'waterCan', 'wineGlass'],
+    datasets : [
+      {
+        label: 'Product Selected Chart',
+        fillColor : '#152874',
+        strokeColor : '#48A4D1',
+        data : clickChart
+      },
+      {
+        label: 'All Appearances',
+        fillColor : '#cbb910',
+        strokeColor : '#48A4D1',
+        data : displayedChart
+      }
+    ]
+  };
+
+  var chartLoc = document.getElementById('chartLoc').getContext('2d');
+  var myBarChart = new Chart(chartLoc).Bar(data);
+}
+
 function handleClick(image){
   image.clickTotal += 1;
   totalClicks += 1;
@@ -139,18 +168,38 @@ function handleClick(image){
   legendText();
 }
 
-pickLeft.addEventListener('click', function(){
-  handleClick(productImages[pickLeft]);
-});
+if(chartData) {
+  productImages = JSON.parse(chartData);
+} else {
+  localStorage.setItem('chartPersist', JSON.stringify(productImages));
+}
 
-pickCenter.addEventListener('click', function(){
-  handleClick(productImages[pickCenter]);
-});
+function handleButtonClick(){
+  chartMake();
+  console.log('chart make click was heard');
+}
 
-pickRight.addEventListener('click', function(){
-  handleClick(productImages[pickRight]);
-});
+var handleLSWipe = function() {
+  console.log('Clear Local Storage Initiated');
+  localStorage.clear();
+};
 
+
+// productPickLeft.addEventListener('click', function(){
+//   handleClick(productImages[pickLeft]);
+// });
+//
+// productPickCenter.addEventListener('click', function(){
+//   handleClick(productImages[pickCenter]);
+// });
+//
+// productPickRight.addEventListener('click', function(){
+//   handleClick(productImages[pickRight]);
+// });
+//
+// resultsShow.addEventListener('click', handleButtonClick);
+// wipeLS.addEventListener('click', handleLSClear);
+//
 
 displayPics();
 button();

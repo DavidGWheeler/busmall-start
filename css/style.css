@@ -92,3 +92,8 @@ ul {
 #grey {
   color: grey;
 }
+
+[hidden],
+template {
+  display: none;
+}
