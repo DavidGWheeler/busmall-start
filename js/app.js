@@ -170,7 +170,7 @@ function handleClick(image){
 }
 
 if(chartData) {
-  productImages = JSON.parse(chartData);
+  chartPersist = JSON.parse(chartData);
 } else {
   localStorage.setItem('chartPersist', JSON.stringify(productImages));
 }
