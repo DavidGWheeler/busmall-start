@@ -10,7 +10,7 @@ var pickRight;
 var pickLeftProduct = document.getElementById('pickLeft');
 var pickCenterProduct = document.getElementById('pickCenter');
 var pickRightProduct = document.getElementById('pickRight');
-var thanksText = document.getElementById('popIn');
+var thankYou = document.getElementById('popIn');
 var resultShow = document.getElementById('resultShow');
 var imageSection = document.getElementById('popOut');
 var wipeLS = document.getElementById('lSWipe');
@@ -40,7 +40,7 @@ var pawBroom = new Products('Pet Paw Broom', 'img/pet-sweep.jpg');
 var scissors = new Products('Pizza Scissors', 'img/scissors.jpg');
 var shark = new Products('Shark Sleeping Bag', 'img/shark.jpg');
 var sweep = new Products('Baby Broom', 'img/sweep.png');
-var tauntaun = new Products('Tauntaun Sleeping Bag');
+var tauntaun = new Products('Tauntaun Sleeping Bag', 'img/tauntaun.jpg');
 var unicorn = new Products('Unicorn Meat', 'img/unicorn.jpg');
 var usb = new Products('Tentacle USB', 'img/usb.gif');
 var waterCan = new Products('Watering Can', 'img/water-can.jpg');
@@ -85,7 +85,7 @@ function displayPics() {
   rightProduct.views += 1;
   console.log(rightProduct);
 
-  previouslyShown = [pickLeft, pickCenter, pickRight];
+  previouslyShown = [leftProduct, centerProduct, rightProduct];
   console.log(previouslyShown + ': = previouslyShown');
 }
 
@@ -152,7 +152,7 @@ function chartMake() {
   };
 
   var chartLoc = document.getElementById('chartLoc').getContext('2d');
-  var myBarChart = new Chart(chartLoc).Bar(data);
+  var myBarChart = new Chart(chartLoc).bar(data);
 }
 
 function handleClick(image){
@@ -164,7 +164,7 @@ function handleClick(image){
   thanksText();
   dataSet1();
   dataSet2();
-  imageAppear();
+  displayPics();
   legendText();
 }
 
@@ -185,21 +185,21 @@ var handleLSWipe = function() {
 };
 
 
-// productPickLeft.addEventListener('click', function(){
-//   handleClick(productImages[pickLeft]);
-// });
-//
-// productPickCenter.addEventListener('click', function(){
-//   handleClick(productImages[pickCenter]);
-// });
-//
-// productPickRight.addEventListener('click', function(){
-//   handleClick(productImages[pickRight]);
-// });
-//
-// resultsShow.addEventListener('click', handleButtonClick);
-// wipeLS.addEventListener('click', handleLSClear);
-//
+pickLeftProduct.addEventListener('click', function(){
+  handleClick(productImages[pickLeft]);
+});
+
+pickCenterProduct.addEventListener('click', function(){
+  handleClick(productImages[pickCenter]);
+});
+
+pickRightProduct.addEventListener('click', function(){
+  handleClick(productImages[pickRight]);
+});
+
+chartLoc.addEventListener('click', handleButtonClick);
+wipeLS.addEventListener('click', handleLSWipe);
+
 
 displayPics();
 button();
