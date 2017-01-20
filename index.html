@@ -11,43 +11,42 @@
    <title>Bus Mall Survey</title>
   </head>
 
-    <div class="wrapper">
+    <section class="wrapper">
       <body>
 
       <section class="top-block full-width">
         <h1 class="title">Bus Mall Focus Group Survey</h1>
-        <h2 class="subtitle size-18 logoText">We need <em>your</em> feedback!</h2>
+        <h2 class="popOut subtitle size-18 logoText">We need <em>your</em> feedback!</h2>
       </section>
 
       <section id="popIn">
-        <h1>Got it, thanks!</h1>
+        <h1>Your input has been recorded.  Thank you!</h1>
       </section>
 
-    <section id="popOut" class="full-width point">
-      <h3 class="inst-title grey centered size-18">Instructions:</h3>
-      <ol class="inst-list size-14 centered black-text">
-        <li>Look closely at the three images shown.</li>
-        <li>Decide which product depicted would be most interesting to you.</li>
-        <li>Click on the image you picked, and three new images will be shown.</li>
-        <li>Each time you make a selection your count will increase by one.</li>
-        <li>Once the counter reaches 25 images selected you are done, and the results will be displayed.</li>
-      </ol>
-      <img src="" alt="" id="pickLeft">
-      <img src="" alt="" id="pickCenter">
-      <img src="" alt="" id="pickRight">
-    </section>
-
+      <section id="popOut" class="full-width point">
+        <h3 class="inst-title grey centered size-18">Instructions:</h3>
+        <ol class="inst-list size-14 centered black-text">
+          <li>Look closely at the three images shown.</li>
+          <li>Decide which product depicted would be most interesting to you.</li>
+          <li>Click on the image you picked, and three new images will be shown.</li>
+          <li>Each time you make a selection your count will increase by one.</li>
+          <li>Once the counter reaches 25 images selected you are done, and the results will be displayed.</li>
+        </ol>
+        <div class ="showBox">
+          <img src="" alt="" id="pickLeft" class="match">
+          <img src="" alt="" id="pickCenter" class="match">
+          <img src="" alt="" id="pickRight" class="match">
+      </div>
+      </section>
     </body>
 
-    <button id="resultShow" type="button"><p id="buttonText">View Results</button>
       <section id="legend">
-         <h6>Times Product Displayed = <b id="yellow">Yellow Bars</b></h6>
-         <h6>Total Votes = <b id="blue">Blue Bars</b></h6>
+        <ul id="resultsDiv">
+
+        </ul>
       </section>
 
-      <canvas id="chartLoc" width="500" height="500"></canvas>
-    <button id="lSWipe" type="button">Clear LS</button>
-  </div>
+  </section>
    <script src="js/app.js" type="text/javascript"></script>
   <footer class="footer-div size-14">
     <legal class="footer-legal grey">

@@ -9,3 +9,7 @@
 - TA @rburke RachelBurke reviewed my User Stories [user_stories.md]("busmall-start/user_stories.md") and gave me buy-off on hittimg MVP + if I implemented all of them.
 
 - Student @arczero1 Brandon Little contributed his knowledge of the .includes method on an array, for evaluating repeated images in my array of previouslyShown.
+
+- Student @luis_manzo Luis Manzo contributed his knowledge of the forEach methond on arrays and offered a tutorial link: https://egghead.io/lessons/javascript-the-array-foreach-method
+
+- Student @robert_hatfield Robert Hatfield helped me with getting some of my key values to create a list.
