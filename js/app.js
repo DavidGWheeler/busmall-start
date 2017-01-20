@@ -126,6 +126,7 @@ function legendText(){
     document.getElementById('legend').style.display = 'none';
   } else {
     document.getElementById('legend').style.display = 'block';
+    listMake();
   }
 }
 
@@ -154,7 +155,6 @@ function handleClick(image){
   dataSet2();
   displayPics();
   legendText();
-  listMake();
 }
 
 function listMake() {

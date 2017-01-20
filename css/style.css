@@ -45,11 +45,11 @@ label {
 }
 
 /*remove bullets*/
-ul {
+/*ul {
   list-style: none;
   list-style-type: none;
 
-}
+}*/
 
 .about-auth {
   font-family: 'Droid Serif', serif;
