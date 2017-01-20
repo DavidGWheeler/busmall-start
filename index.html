@@ -1,47 +1,57 @@
 <!DOCTYPE html>
+
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="sizes.css">
-    <link rel="stylesheet" type="text/css" href="position.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" type="text/css" href="effects.css">
+    <link rel="stylesheet" type="text/css" href="css/effects.css">
+    <link rel="stylesheet" type="text/css" href="css/sizes.css">
+    <link rel="stylesheet" type="text/css" href="css/position.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Abel|Droid+Serif|Patrick+Hand|Yellowtail|Oswald:700" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
    <title>Bus Mall Survey</title>
   </head>
+
     <div class="wrapper">
       <body>
 
       <section class="top-block full-width">
-        <h1 class="title">Buss Mall Focus Group Survey</h1>
-        <h2 class="subtitle size-18">We need <em>your</em> feedback!</h2>
+        <h1 class="title">Bus Mall Focus Group Survey</h1>
+        <h2 class="subtitle size-18 logoText">We need <em>your</em> feedback!</h2>
       </section>
 
-      <section class="instructions full-width size-16 black-text">
-        <h3 class="inst-title grey-text centered size-18">Instructions:</h3>
-        <ol class="inst-list size-14 centered black-text">
-          <li>Look closely at the three images shown.</li>
-          <li>Decide which product depicted would be most interesting to you.</li>
-          <li>Click on the image you picked, and three new images will be shown.</li>
-          <li>Each time you make a selection your count will increase by one.</li>
-          <li>Once the counter reaches 25 images selected you are done, and the results will be displayed.</li>
-        </ol>
+      <section id="popIn">
+        <h1>Got it, thanks!</h1>
       </section>
 
-      <section class="rand-imgs full-width point alt-pop">
-        <img src="" id="pick-left" alt="Click on this image to pick it!">
-        <img src="" id="pick-center" alt="Click on this image to pick it!">
-        <img src="" id="pick-right" alt="Click on this image to pick it!">
-      </section>
-      <section class="count left size-18 block"></section>
+    <section id="popOut" class="full-width point">
+      <h3 class="inst-title grey centered size-18">Instructions:</h3>
+      <ol class="inst-list size-14 centered black-text">
+        <li>Look closely at the three images shown.</li>
+        <li>Decide which product depicted would be most interesting to you.</li>
+        <li>Click on the image you picked, and three new images will be shown.</li>
+        <li>Each time you make a selection your count will increase by one.</li>
+        <li>Once the counter reaches 25 images selected you are done, and the results will be displayed.</li>
+      </ol>
+      <img src="" alt="" id="pickLeft">
+      <img src="" alt="" id="pickCenter">
+      <img src="" alt="" id="pickRight">
+    </section>
 
-  </body>
-    <div class="line-div"></div>
-      <hr class="foot-line inline full-width">
-    </div>
+    </body>
+
+    <button id="resultShow" type="button"><p id="buttonText">View Results</button>
+      <section id="legend">
+         <h6>Times Product Displayed = <b id="yellow">Yellow Bars</b></h6>
+         <h6>Total Votes = <b id="blue">Blue Bars</b></h6>
+      </section>
+
+      <canvas id="chartLoc" width="500" height="500"></canvas>
+    <button id="lSWipe" type="button">Clear LS</button>
+  </div>
    <script src="js/app.js" type="text/javascript"></script>
   <footer class="footer-div size-14">
-    <legal class="footer-legal grey-text">
-      Buss Mall&copy;2017 · All Rights Reserved.<br>Proudly published with Git.io&trade;
+    <legal class="footer-legal grey">
+      Bus Mall&copy;2017 · All Rights Reserved.<br>Proudly published with Git.io&trade;
     </legal>
   </footer>
 </html>

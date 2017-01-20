@@ -29,6 +29,14 @@ header, main, footer {
   margin: 0 auto;
 }
 
+.size-line {
+  font-size: 1em;
+}
+
+.size-2 {
+  font-size: 0.125em;
+}
+
 .size-9 {
   font-size: 0.563em
 }

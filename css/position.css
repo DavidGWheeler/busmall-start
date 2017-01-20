@@ -16,6 +16,27 @@ h2 {
   margin: 0.5em 0em 1.4em 1.35em;
 }
 
+.logoBox {
+  width: 14em;
+  height: 3.3em;
+  padding: 1em 0em 0em 0em;
+}
+
+.logoImg {
+  margin-top: 0.01em;
+  padding-right: 0.01em;
+}
+
+.logoFont {
+  padding: 0em 0.9em;
+  margin: -0.275em 0em 0.1em;
+  width: 9.938em;
+}
+
+.logoText {
+  text-indent: .5em;
+}
+
 /*.lineDiv {
   position:absolute;
   content: url("img/small-logo.jpg");
@@ -109,4 +130,37 @@ footer {
 
 .footer-legal {
   padding: 0.1em 0em;
+}
+
+button {
+  margin-left: 44%;
+  margin-right: auto;
+  margin-top: 0%;
+  margin-bottom: 3px;
+  background-color: white;
+  border-width: 2px;
+  border-color: blue;
+  text-align: center;
+  padding: 25px;
+}
+
+canvas {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+}
+
+legend {
+  border: 0; /* 1 */
+  padding: 0; /* 2 */
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  padding: 0;
 }

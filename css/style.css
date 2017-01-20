@@ -36,9 +36,6 @@ label {
   font-size: 23px;
 }
 
-.grey-text {
-  color: grey;
-}
 
 
 .list-bg {
@@ -78,7 +75,25 @@ ul {
 .foot-line {
   width: 100%;
   margin: -1% 0%;
-  font-size: 1em;
-  display: inline-block;
   background-color: lightgrey;
+}
+
+#legend {
+  margin-top: 20px;
+  text-align: center;
+}
+#yellow {
+  color: #cbb910;
+}
+#blue {
+  color: #152874;
+}
+
+#grey {
+  color: grey;
+}
+
+[hidden],
+template {
+  display: none;
 }
