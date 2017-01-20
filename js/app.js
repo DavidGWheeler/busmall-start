@@ -11,8 +11,10 @@ var pickLeftProduct = document.getElementById('pickLeft');
 var pickCenterProduct = document.getElementById('pickCenter');
 var pickRightProduct = document.getElementById('pickRight');
 var thankYou = document.getElementById('popIn');
+console.log(thankYou);
 var resultShow = document.getElementById('resultShow');
 var imageSection = document.getElementById('popOut');
+console.log(imageSection);
 var wipeLS = document.getElementById('lSWipe');
 var chartData = localStorage.getItem('chartPersist');
 var previouslyShown = [];
@@ -54,44 +56,53 @@ var randNum = function() {
 
 function displayPics() {
   pickLeft = randNum();
-  var leftProduct = productImages[0];
+  while (pickLeft === previouslyShown.includes(pickLeft)) {
+    pickLeft = randNum();
+    console.log(pickLeft);
+  }
+  var leftProduct = productImages[pickLeft];
   pickLeftProduct.src = leftProduct.path;
   pickLeftProduct.alt = leftProduct.name;
   leftProduct.views += 1;
+  leftProduct.displayedCount += 1;
+  console.log(leftProduct.views);
 
 //pick a second picture for center and compare to left.
   pickCenter = randNum();
 //While they match, pick another
-  while (pickCenter === pickLeft || previouslyShown.includes(0)) {
+  while (pickCenter === pickLeft || previouslyShown.includes(pickCenter)) {
     pickCenter = randNum();
     console.log(pickCenter + ': = pickCenter');
   }
 
-  var centerProduct = productImages[1];
+  var centerProduct = productImages[pickCenter];
   pickCenterProduct.src = centerProduct.path;
   pickCenterProduct.alt = centerProduct.name;
   centerProduct.views += 1;
+  centerProduct.displayedCount += 1;
+  console.log(centerProduct.views);
 
 //pick a third image for the right, compare to center image.
   pickRight = randNum();
 //While they match, pick another
-  while (pickRight === pickLeft || pickRight === pickCenter || previouslyShown.includes(2)) {
+  while (pickRight === pickLeft || pickRight === pickCenter || previouslyShown.includes(pickRight)) {
     pickRight = randNum();
     console.log(pickRight + ': = pickRight');
   }
 
-  var rightProduct = productImages[2];
+  var rightProduct = productImages[pickRight];
   pickRightProduct.src = rightProduct.path;
   pickRightProduct.alt = rightProduct.name;
   rightProduct.views += 1;
-  console.log(rightProduct);
+  rightProduct.displayedCount += 1;
+  console.log(rightProduct.views);
 
   previouslyShown = [pickLeft, pickCenter, pickRight];
   console.log(previouslyShown + ': = previouslyShown');
 }
 
 function button() {
-  if(totalClicks < productImages.length) {
+  if (totalClicks < productImages.length) {
     document.getElementById('resultShow').style.visibility = 'hidden';
   } else {
     document.getElementById('resultShow').style.visibility = 'visible';
@@ -141,20 +152,27 @@ function chartMake() {
         label: 'Product Selected Chart',
         fillColor : '#152874',
         strokeColor : '#48A4D1',
-        data : clickChart
+        data : productImages.clickTotal
       },
       {
         label: 'All Appearances',
         fillColor : '#cbb910',
         strokeColor : '#48A4D1',
-        data : displayedChart
+        data : productImages.displayedCount
       }
-    ]
-  };
+    ]};
+};
 
-  var chartLoc = document.getElementById('chartLoc').getContext('2d');
-  var myBarChart = new Chart(chartLoc).bar(data);
-}
+var chartLoc = document.getElementById('chartLoc').getContext('2d');
+
+var myBarChart = new Chart(chartLoc, {
+  type: 'bar',
+  data: chartMake(),
+  options: {
+    responsive: false
+  }
+});
+
 
 function handleClick(image){
   image.clickTotal += 1;
@@ -170,7 +188,7 @@ function handleClick(image){
 }
 
 if(chartData) {
-  chartPersist = JSON.parse(chartData);
+  productImages = JSON.parse(chartData);
 } else {
   localStorage.setItem('chartPersist', JSON.stringify(productImages));
 }
@@ -198,7 +216,7 @@ pickRightProduct.addEventListener('click', function(){
   handleClick(productImages[pickRight]);
 });
 
-chartLoc.addEventListener('click', handleButtonClick);
+resultShow.addEventListener('click', handleButtonClick);
 wipeLS.addEventListener('click', handleLSWipe);
 
 
