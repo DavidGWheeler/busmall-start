@@ -12,18 +12,15 @@ var pickCenterProduct = document.getElementById('pickCenter');
 var pickRightProduct = document.getElementById('pickRight');
 var thankYou = document.getElementById('popIn');
 console.log(thankYou);
-var resultShow = document.getElementById('resultShow');
 var imageSection = document.getElementById('popOut');
 console.log(imageSection);
-var wipeLS = document.getElementById('lSWipe');
-var chartData = localStorage.getItem('chartPersist');
 var previouslyShown = [];
 
 function Products(name, path) {
   this.name = name;
   this.path = path;
   this.totalClicks = 0;
-  this.displayedCount = 0;
+  this.views = 0;
   productImages.push(this);
   console.log(this);
 }
@@ -64,8 +61,7 @@ function displayPics() {
   pickLeftProduct.src = leftProduct.path;
   pickLeftProduct.alt = leftProduct.name;
   leftProduct.views += 1;
-  leftProduct.displayedCount += 1;
-  console.log(leftProduct.views);
+  console.log(productImages[pickLeft].views);
 
 //pick a second picture for center and compare to left.
   pickCenter = randNum();
@@ -79,8 +75,7 @@ function displayPics() {
   pickCenterProduct.src = centerProduct.path;
   pickCenterProduct.alt = centerProduct.name;
   centerProduct.views += 1;
-  centerProduct.displayedCount += 1;
-  console.log(centerProduct.views);
+  console.log(productImages[pickCenter].views);
 
 //pick a third image for the right, compare to center image.
   pickRight = randNum();
@@ -94,8 +89,7 @@ function displayPics() {
   pickRightProduct.src = rightProduct.path;
   pickRightProduct.alt = rightProduct.name;
   rightProduct.views += 1;
-  rightProduct.displayedCount += 1;
-  console.log(rightProduct.views);
+  console.log(productImages[pickLeft].views);
 
   previouslyShown = [pickLeft, pickCenter, pickRight];
   console.log(previouslyShown + ': = previouslyShown');
@@ -103,11 +97,13 @@ function displayPics() {
 
 function button() {
   if (totalClicks < productImages.length) {
-    document.getElementById('resultShow').style.visibility = 'hidden';
+    document.getElementById('popIn').style.visibility = 'hidden';
   } else {
-    document.getElementById('resultShow').style.visibility = 'visible';
+    document.getElementById('popIn').style.visibility = 'visible';
   }
+
 }
+
 function hideSection() {
   if (totalClicks < productImages.length){
     document.getElementById('popOut').style.display = 'block';
@@ -124,6 +120,7 @@ function thanksText(){
   }
 }
 
+//hide or reveal the area for my list
 function legendText(){
   if (totalClicks < productImages.length){
     document.getElementById('legend').style.display = 'none';
@@ -140,45 +137,15 @@ function dataSet1() {
 
 function dataSet2() {
   for (var i = 0; i < productImages.length; i++){
-    displayedCount[i] = productImages[i].timesDisplayed;
+    displayedCount[i] = productImages[i].displayedCount;
   }
 }
 
-function chartMake() {
-  var data = {
-    labels : ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulu', 'dogDuck', 'dragon', 'pen', 'pawBroom', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'waterCan', 'wineGlass'],
-    datasets : [
-      {
-        label: 'Product Selected Chart',
-        fillColor : '#152874',
-        strokeColor : '#48A4D1',
-        data : productImages.clickTotal
-      },
-      {
-        label: 'All Appearances',
-        fillColor : '#cbb910',
-        strokeColor : '#48A4D1',
-        data : productImages.displayedCount
-      }
-    ]};
-};
-
-var chartLoc = document.getElementById('chartLoc').getContext('2d');
-
-var myBarChart = new Chart(chartLoc, {
-  type: 'bar',
-  data: chartMake(),
-  options: {
-    responsive: false
-  }
-});
-
-
+//when an image gets a click this all happens
 function handleClick(image){
   image.clickTotal += 1;
   totalClicks += 1;
   hideSection();
-  localStorage.setItem('chartPersist', JSON.stringify(productImages));
   button();
   thanksText();
   dataSet1();
@@ -187,23 +154,7 @@ function handleClick(image){
   legendText();
 }
 
-if(chartData) {
-  productImages = JSON.parse(chartData);
-} else {
-  localStorage.setItem('chartPersist', JSON.stringify(productImages));
-}
-
-function handleButtonClick(){
-  chartMake();
-  console.log('chart make click was heard');
-}
-
-var handleLSWipe = function() {
-  console.log('Clear Local Storage Initiated');
-  localStorage.clear();
-};
-
-
+//image click event listeners
 pickLeftProduct.addEventListener('click', function(){
   handleClick(productImages[pickLeft]);
 });
@@ -216,10 +167,7 @@ pickRightProduct.addEventListener('click', function(){
   handleClick(productImages[pickRight]);
 });
 
-resultShow.addEventListener('click', handleButtonClick);
-wipeLS.addEventListener('click', handleLSWipe);
-
-
+//call functions
 displayPics();
 button();
 hideSection();
