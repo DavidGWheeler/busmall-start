@@ -19,7 +19,7 @@ var previouslyShown = [];
 function Products(name, path) {
   this.name = name;
   this.path = path;
-  this.totalClicks = 0;
+  this.clickTotal = 0;
   this.views = 0;
   productImages.push(this);
   console.log(this);
@@ -141,6 +141,7 @@ function dataSet2() {
   }
 }
 
+
 //when an image gets a click this all happens
 function handleClick(image){
   image.clickTotal += 1;
@@ -152,6 +153,19 @@ function handleClick(image){
   dataSet2();
   displayPics();
   legendText();
+  listMake();
+}
+
+function listMake() {
+  var i = 0;
+  productImages.forEach(function (productImages) {
+    var li = document.createElement('li');
+    li.textContent = productImages[i].clickTotal + ' votes for ' + productImages.name;
+
+    var resultsDiv = document.getElementById('resultsDiv');
+    resultsDiv.appendChild(li);
+    i++;
+  });
 }
 
 //image click event listeners
@@ -173,3 +187,4 @@ button();
 hideSection();
 thanksText();
 legendText();
+listMake();
