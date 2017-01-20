@@ -2,7 +2,7 @@
 
 var productImages = [];
 var clickCount = [];
-var displayedCount = [];
+var views = [];
 var totalClicks = 0;
 var pickLeft;
 var pickCenter;
@@ -55,13 +55,13 @@ function displayPics() {
   pickLeft = randNum();
   while (pickLeft === previouslyShown.includes(pickLeft)) {
     pickLeft = randNum();
-    console.log(pickLeft);
+    console.log(pickLeft + 'pickLeft');
   }
   var leftProduct = productImages[pickLeft];
   pickLeftProduct.src = leftProduct.path;
   pickLeftProduct.alt = leftProduct.name;
   leftProduct.views += 1;
-  console.log(productImages[pickLeft].views);
+  console.log(productImages[pickLeft].views + 'views of left');
 
 //pick a second picture for center and compare to left.
   pickCenter = randNum();
@@ -75,7 +75,7 @@ function displayPics() {
   pickCenterProduct.src = centerProduct.path;
   pickCenterProduct.alt = centerProduct.name;
   centerProduct.views += 1;
-  console.log(productImages[pickCenter].views);
+  console.log(productImages[pickCenter].views + ' center click');
 
 //pick a third image for the right, compare to center image.
   pickRight = randNum();
@@ -89,7 +89,7 @@ function displayPics() {
   pickRightProduct.src = rightProduct.path;
   pickRightProduct.alt = rightProduct.name;
   rightProduct.views += 1;
-  console.log(productImages[pickLeft].views);
+  console.log(productImages[pickLeft].views + ' left click');
 
   previouslyShown = [pickLeft, pickCenter, pickRight];
   console.log(previouslyShown + ': = previouslyShown');
@@ -105,7 +105,7 @@ function button() {
 }
 
 function hideSection() {
-  if (totalClicks < productImages.length){
+  if (totalClicks < 25){
     document.getElementById('popOut').style.display = 'block';
   } else {
     document.getElementById('popOut').style.display = 'none';
@@ -113,7 +113,7 @@ function hideSection() {
 }
 
 function thanksText(){
-  if (totalClicks < productImages.length){
+  if (totalClicks < 25){
     document.getElementById('popIn').style.display = 'none';
   } else {
     document.getElementById('popIn').style.display = 'block';
@@ -122,7 +122,7 @@ function thanksText(){
 
 //hide or reveal the area for my list
 function legendText(){
-  if (totalClicks < productImages.length){
+  if (totalClicks < 25){
     document.getElementById('legend').style.display = 'none';
   } else {
     document.getElementById('legend').style.display = 'block';
@@ -137,7 +137,7 @@ function dataSet1() {
 
 function dataSet2() {
   for (var i = 0; i < productImages.length; i++){
-    displayedCount[i] = productImages[i].displayedCount;
+    views[i] = productImages[i].views;
   }
 }
 
@@ -145,6 +145,7 @@ function dataSet2() {
 //when an image gets a click this all happens
 function handleClick(image){
   image.clickTotal += 1;
+  console.log(image.clickTotal + ' click total incremented');
   totalClicks += 1;
   hideSection();
   button();
@@ -157,14 +158,13 @@ function handleClick(image){
 }
 
 function listMake() {
-  var i = 0;
   productImages.forEach(function (productImages) {
     var li = document.createElement('li');
-    li.textContent = productImages[i].clickTotal + ' votes for ' + productImages.name;
+    li.textContent = productImages.clickTotal + ' votes for ' + productImages.name;
+    console.log(productImages.clickTotal + ' votes for ' + productImages.name);
 
     var resultsDiv = document.getElementById('resultsDiv');
     resultsDiv.appendChild(li);
-    i++;
   });
 }
 
@@ -187,4 +187,3 @@ button();
 hideSection();
 thanksText();
 legendText();
-listMake();
