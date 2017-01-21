@@ -1,4 +1,4 @@
-# busmall-start
+# Busmall:
 ### Build a website which will present product images to a user, three at a time, and present results after selecting 25 of the presented images.
 
 
