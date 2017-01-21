@@ -14,8 +14,6 @@ var thankYou = document.getElementById('popIn');
 console.log(thankYou);
 var imageSection = document.getElementById('popOut');
 console.log(imageSection);
-// var chartData = localStorage.getItem('chartPersist');
-// console.log(chartData + ' Locally Stored Data');
 var previouslyShown = [];
 
 function Products(name, path) {
@@ -97,15 +95,6 @@ function displayPics() {
   console.log(previouslyShown + ': = previouslyShown');
 }
 
-function button() {
-  if (totalClicks < 25) {
-    document.getElementById('resultShow').style.visibility = 'hidden';
-  } else {
-    document.getElementById('resultShow').style.visibility = 'visible';
-  }
-
-}
-
 function hideSection() {
   if (totalClicks < 25){
     document.getElementById('popOut').style.display = 'block';
@@ -162,13 +151,34 @@ var myChart = new Chart(ctx, {
     datasets : [
       {
         label: 'Product Selected Chart',
-        fillcolor : '#152874',
-        strokeColor : '#48A4D1',
+        backgroundColor : [
+          '#152874',/*bag*/
+          '#3a5787',/*banana*/
+          '#a7b7d1',/*bathroom*/
+          '#5f6672',/*boots*/
+          '#19263d',/*breakfast*/
+          '#a399fc',/*bubblegum*/
+          '#0d073f',/*chair*/
+          '#bae4fc',/*cthulu*/
+          '#677d89',/*dogDuck*/
+          '#2c96d3',/*dragon*/
+          '#179168',/*pen*/
+          '#0c3f2e',/*pawBroom*/
+          '#4d3e8e',/*scissors*/
+          '#170666',/*shark*/
+          '#723396',/*tauntaun*/
+          '#2e143d',/*unicorn*/
+          '#c09ad6',/*usb*/
+          '#9b31d8',/*waterCan*/
+          '#36514a',/*wineglass*/
+        ],
+        borderColor : '#48A4D1',
         data : clickCount
       },
       {
         label: 'All Appearances',
-        fillcolor : '#48A4D1',
+        backgroundColor : '#48A4D1',
+        borderColor: '#152874',
         data : views
       }
     ]}
@@ -180,21 +190,12 @@ function handleClick(image){
   console.log(image.clickTotal + ' click total incremented');
   totalClicks += 1;
   hideSection();
-  // hideChart();
-  button();
   thanksText();
   dataSet1();
   dataSet2();
   displayPics();
   legendText();
 }
-
-//show Results button heard
-function handleButtonClick(){
-  dataSet2();
-  dataSet1();
-}
-
 
 //image click event listeners
 pickLeftProduct.addEventListener('click', function(){
@@ -210,14 +211,8 @@ pickRightProduct.addEventListener('click', function(){
 });
 
 
-resultShow.addEventListener('click', function(){
-  handleButtonClick();
-  console.log('show results click was heard');
-});
-
 //call functions
 displayPics();
-button();
 hideSection();
 hideChart();
 thanksText();

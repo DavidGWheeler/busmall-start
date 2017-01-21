@@ -148,15 +148,14 @@ canvas {
   margin-left: auto;
   margin-right: auto;
   display: flex;
-  width=500;
-  height=500;
+  border: 1;
 }
 
 legend {
-  border: 0; /* 1 */
-  padding: 0; /* 2 */
+  border: 0;
+  padding: 0;
 }
-
+/*
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -165,4 +164,4 @@ table {
 td,
 th {
   padding: 0;
-}
+}*/
