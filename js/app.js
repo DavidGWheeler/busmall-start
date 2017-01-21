@@ -14,6 +14,8 @@ var thankYou = document.getElementById('popIn');
 console.log(thankYou);
 var imageSection = document.getElementById('popOut');
 console.log(imageSection);
+// var chartData = localStorage.getItem('chartPersist');
+// console.log(chartData + ' Locally Stored Data');
 var previouslyShown = [];
 
 function Products(name, path) {
@@ -96,10 +98,10 @@ function displayPics() {
 }
 
 function button() {
-  if (totalClicks < productImages.length) {
-    document.getElementById('popIn').style.visibility = 'hidden';
+  if (totalClicks < 25) {
+    document.getElementById('resultShow').style.visibility = 'hidden';
   } else {
-    document.getElementById('popIn').style.visibility = 'visible';
+    document.getElementById('resultShow').style.visibility = 'visible';
   }
 
 }
@@ -109,6 +111,14 @@ function hideSection() {
     document.getElementById('popOut').style.display = 'block';
   } else {
     document.getElementById('popOut').style.display = 'none';
+  }
+}
+
+function hideChart() {
+  if (totalClicks < 25){
+    document.getElementById('myChart').style.display = 'hidden';
+  } else {
+    document.getElementById('myChart').style.display = 'visible';
   }
 }
 
@@ -126,7 +136,6 @@ function legendText(){
     document.getElementById('legend').style.display = 'none';
   } else {
     document.getElementById('legend').style.display = 'block';
-    listMake();
   }
 }
 
@@ -142,6 +151,26 @@ function dataSet2() {
   }
 }
 
+//I think this is implemented per chartJS documentation
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels : ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulu', 'dogDuck', 'dragon', 'pen', 'pawBroom', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'waterCan', 'wineGlass'],
+    datasets : [
+      {
+        label: 'Product Selected Chart',
+        fillcolor : '#152874',
+        strokeColor : '#48A4D1',
+        data : productImages.clickTotal
+      },
+      {
+        label: 'All Appearances',
+        fillcolor : '#48A4D1',
+        data : productImages.views
+      }
+    ]}
+});
 
 //when an image gets a click this all happens
 function handleClick(image){
@@ -149,6 +178,7 @@ function handleClick(image){
   console.log(image.clickTotal + ' click total incremented');
   totalClicks += 1;
   hideSection();
+  // hideChart();
   button();
   thanksText();
   dataSet1();
@@ -157,16 +187,11 @@ function handleClick(image){
   legendText();
 }
 
-function listMake() {
-  productImages.forEach(function (productImages) {
-    var li = document.createElement('li');
-    li.textContent = productImages.clickTotal + ' votes for ' + productImages.name;
-    console.log(productImages.clickTotal + ' votes for ' + productImages.name);
-
-    var resultsDiv = document.getElementById('resultsDiv');
-    resultsDiv.appendChild(li);
-  });
+//show Results button heard
+function handleButtonClick(){
+  myChart();
 }
+
 
 //image click event listeners
 pickLeftProduct.addEventListener('click', function(){
@@ -181,9 +206,16 @@ pickRightProduct.addEventListener('click', function(){
   handleClick(productImages[pickRight]);
 });
 
+
+resultShow.addEventListener('click', function(){
+  handleButtonClick();
+  console.log('show results click was heard');
+});
+
 //call functions
 displayPics();
 button();
 hideSection();
+hideChart();
 thanksText();
 legendText();
