@@ -142,12 +142,14 @@ function legendText(){
 function dataSet1() {
   for (var i = 0; i < productImages.length; i++) {
     clickCount[i] = productImages[i].clickTotal;
+    console.log(clickCount[i] + ' = dataSet1');
   }
 }
 
 function dataSet2() {
   for (var i = 0; i < productImages.length; i++){
     views[i] = productImages[i].views;
+    console.log(views[i] + ' = dataSet2');
   }
 }
 
@@ -162,12 +164,12 @@ var myChart = new Chart(ctx, {
         label: 'Product Selected Chart',
         fillcolor : '#152874',
         strokeColor : '#48A4D1',
-        data : productImages.clickTotal
+        data : clickCount
       },
       {
         label: 'All Appearances',
         fillcolor : '#48A4D1',
-        data : productImages.views
+        data : views
       }
     ]}
 });
@@ -189,7 +191,8 @@ function handleClick(image){
 
 //show Results button heard
 function handleButtonClick(){
-  myChart();
+  dataSet2();
+  dataSet1();
 }
 
 
