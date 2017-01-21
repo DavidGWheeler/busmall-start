@@ -95,20 +95,19 @@ function displayPics() {
   console.log(previouslyShown + ': = previouslyShown');
 }
 
-function button() {
-  if (totalClicks < productImages.length) {
-    document.getElementById('popIn').style.visibility = 'hidden';
-  } else {
-    document.getElementById('popIn').style.visibility = 'visible';
-  }
-
-}
-
 function hideSection() {
   if (totalClicks < 25){
     document.getElementById('popOut').style.display = 'block';
   } else {
     document.getElementById('popOut').style.display = 'none';
+  }
+}
+
+function hideChart() {
+  if (totalClicks < 25){
+    document.getElementById('myChart').style.display = 'hidden';
+  } else {
+    document.getElementById('myChart').style.display = 'visible';
   }
 }
 
@@ -126,22 +125,64 @@ function legendText(){
     document.getElementById('legend').style.display = 'none';
   } else {
     document.getElementById('legend').style.display = 'block';
-    listMake();
   }
 }
 
 function dataSet1() {
   for (var i = 0; i < productImages.length; i++) {
     clickCount[i] = productImages[i].clickTotal;
+    console.log(clickCount[i] + ' = dataSet1');
   }
 }
 
 function dataSet2() {
   for (var i = 0; i < productImages.length; i++){
     views[i] = productImages[i].views;
+    console.log(views[i] + ' = dataSet2');
   }
 }
 
+//I think this is implemented per chartJS documentation
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels : ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulu', 'dogDuck', 'dragon', 'pen', 'pawBroom', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'waterCan', 'wineGlass'],
+    datasets : [
+      {
+        label: 'Product Selected Chart',
+        backgroundColor : [
+          '#152874',/*bag*/
+          '#3a5787',/*banana*/
+          '#a7b7d1',/*bathroom*/
+          '#5f6672',/*boots*/
+          '#19263d',/*breakfast*/
+          '#a399fc',/*bubblegum*/
+          '#0d073f',/*chair*/
+          '#bae4fc',/*cthulu*/
+          '#677d89',/*dogDuck*/
+          '#2c96d3',/*dragon*/
+          '#179168',/*pen*/
+          '#0c3f2e',/*pawBroom*/
+          '#4d3e8e',/*scissors*/
+          '#170666',/*shark*/
+          '#723396',/*tauntaun*/
+          '#2e143d',/*unicorn*/
+          '#c09ad6',/*usb*/
+          '#9b31d8',/*waterCan*/
+          '#36514a',/*wineglass*/
+        ],
+        borderColor : '#48A4D1',
+        data : clickCount
+      },
+      {
+        label: 'All Appearances',
+        backgroundColor : '#48A4D1',
+        borderColor: '#152874',
+        data : views
+      }
+    ]}
+});
 
 //when an image gets a click this all happens
 function handleClick(image){
@@ -149,23 +190,11 @@ function handleClick(image){
   console.log(image.clickTotal + ' click total incremented');
   totalClicks += 1;
   hideSection();
-  button();
   thanksText();
   dataSet1();
   dataSet2();
   displayPics();
   legendText();
-}
-
-function listMake() {
-  productImages.forEach(function (productImages) {
-    var li = document.createElement('li');
-    li.textContent = productImages.clickTotal + ' votes for ' + productImages.name;
-    console.log(productImages.clickTotal + ' votes for ' + productImages.name);
-
-    var resultsDiv = document.getElementById('resultsDiv');
-    resultsDiv.appendChild(li);
-  });
 }
 
 //image click event listeners
@@ -181,9 +210,10 @@ pickRightProduct.addEventListener('click', function(){
   handleClick(productImages[pickRight]);
 });
 
+
 //call functions
 displayPics();
-button();
 hideSection();
+hideChart();
 thanksText();
 legendText();

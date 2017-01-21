@@ -136,25 +136,26 @@ button {
   margin-left: 44%;
   margin-right: auto;
   margin-top: 0%;
-  margin-bottom: 3px;
+  margin-bottom: 2px;
   background-color: white;
   border-width: 2px;
   border-color: blue;
   text-align: center;
-  padding: 25px;
+  padding: 15px;
 }
 
 canvas {
   margin-left: auto;
   margin-right: auto;
   display: flex;
+  border: 1;
 }
 
 legend {
-  border: 0; /* 1 */
-  padding: 0; /* 2 */
+  border: 0;
+  padding: 0;
 }
-
+/*
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -163,4 +164,4 @@ table {
 td,
 th {
   padding: 0;
-}
+}*/
