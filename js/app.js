@@ -14,6 +14,7 @@ var thankYou = document.getElementById('popIn');
 console.log(thankYou);
 var imageSection = document.getElementById('popOut');
 console.log(imageSection);
+var chartData = localStorage.getItem('chartPersist');
 var previouslyShown = [];
 
 function Products(name, path) {
@@ -190,11 +191,18 @@ function handleClick(image){
   console.log(image.clickTotal + ' click total incremented');
   totalClicks += 1;
   hideSection();
+  localStorage.setItem('chartPersist', JSON.stringify(productImages));
   thanksText();
   dataSet1();
   dataSet2();
   displayPics();
   legendText();
+}
+
+if(chartData) {
+  productImages = JSON.parse(chartData);
+} else {
+  localStorage.setItem('chartPersist', JSON.stringify(productImages));
 }
 
 //image click event listeners
