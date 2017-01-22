@@ -53,11 +53,12 @@ var randNum = function() {
 };
 
 function displayPics() {
-  pickLeft = randNum();
-  while (pickLeft === previouslyShown.includes(pickLeft)) {
+  do {
     pickLeft = randNum();
     console.log(pickLeft + 'pickLeft');
   }
+  while (previouslyShown.includes(pickLeft));
+
   var leftProduct = productImages[pickLeft];
   pickLeftProduct.src = leftProduct.path;
   pickLeftProduct.alt = leftProduct.name;
@@ -67,10 +68,11 @@ function displayPics() {
 //pick a second picture for center and compare to left.
   pickCenter = randNum();
 //While they match, pick another
-  while (pickCenter === pickLeft || previouslyShown.includes(pickCenter)) {
+  do {
     pickCenter = randNum();
     console.log(pickCenter + ': = pickCenter');
   }
+  while (pickCenter === pickLeft || previouslyShown.includes(pickCenter));
 
   var centerProduct = productImages[pickCenter];
   pickCenterProduct.src = centerProduct.path;
@@ -81,10 +83,11 @@ function displayPics() {
 //pick a third image for the right, compare to center image.
   pickRight = randNum();
 //While they match, pick another
-  while (pickRight === pickLeft || pickRight === pickCenter || previouslyShown.includes(pickRight)) {
+  do {
     pickRight = randNum();
     console.log(pickRight + ': = pickRight');
   }
+  while (pickRight === pickLeft || pickRight === pickCenter || previouslyShown.includes(pickRight));
 
   var rightProduct = productImages[pickRight];
   pickRightProduct.src = rightProduct.path;
